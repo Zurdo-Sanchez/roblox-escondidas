@@ -2,26 +2,32 @@
   "name": "roblox-escondidas",
   "tree": {
     "$className": "DataModel",
-    "ReplicatedStorage": {
-      "$className": "ReplicatedStorage",
-      "SharedVariables": {
-        "$path": "src/ReplicatedStorage/SharedVariables.lua"
-      }
-    },
     "ServerScriptService": {
       "$className": "ServerScriptService",
       "GameHandler": {
-        "$path": "src/ServerScriptService/GameHandler.server.lua"
+        "$path": "src/server/GameHandler.server.lua"
+      },
+      "WeaponScript": {
+        "$path": "src/server/WeaponScript.server.lua"
+      },
+      "Timer": {
+        "$path": "src/server/Timer.server.lua"
       }
     },
     "StarterPlayer": {
       "$className": "StarterPlayer",
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
-        "Hider": {
-          "$path": "src/StarterPlayer/StarterPlayerScripts/Hider.client.lua"
+        "Camouflage": {
+          "$path": "src/client/Camouflage.client.lua"
+        },
+        "UI": {
+          "$path": "src/client/UI.client.lua"
         }
       }
+    },
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage"
     }
   }
 }
