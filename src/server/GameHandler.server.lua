@@ -30,6 +30,9 @@ GameActive.Parent = ReplicatedStorage
 local Hiders = {}
 
 local MATCH_TIME = 180 -- 3 minute default
+local PREP_TIME = 15
+local preGameRunning = false
+local startPreGame
 
 local function assignRoles()
     local players = Players:GetPlayers()
@@ -61,8 +64,25 @@ local function assignRoles()
             if GameActive.Value then
                 GameActive.Value = false
                 RoleEvent:FireAllClients("GameOver", "Hiders")
+                startPreGame()
             end
         end)
+    end
+end
+
+startPreGame = function()
+    if preGameRunning or GameActive.Value then
+        return
+    end
+    preGameRunning = true
+    if _G.StartTimer then
+        _G.StartTimer(PREP_TIME, function()
+            preGameRunning = false
+            assignRoles()
+        end)
+    else
+        preGameRunning = false
+        assignRoles()
     end
 end
 
@@ -91,6 +111,7 @@ local function handleCharacter(plr, char)
             if alive == 0 then
                 GameActive.Value = false
                 RoleEvent:FireAllClients("GameOver", "Seeker")
+                startPreGame()
             end
         end
     end)
@@ -125,6 +146,6 @@ end)
 
 Players.PlayerAdded:Connect(function()
     if not GameActive.Value and #Players:GetPlayers() >= 2 then
-        assignRoles()
+        startPreGame()
     end
 end)
