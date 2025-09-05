@@ -1,0 +1,27 @@
+{
+  "name": "roblox-escondidas",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "SharedVariables": {
+        "$path": "src/ReplicatedStorage/SharedVariables.lua"
+      }
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "GameHandler": {
+        "$path": "src/ServerScriptService/GameHandler.server.lua"
+      }
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "Hider": {
+          "$path": "src/StarterPlayer/StarterPlayerScripts/Hider.client.lua"
+        }
+      }
+    }
+  }
+}
